@@ -42,25 +42,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $weatherUrl = "https://melchior.moja.it:8085/weather-api/get_weather?lat=$latitude&lon=$longitude";
     $weatherData = callAPI($weatherUrl);
 
-    /*array(3) {
-  ["current_temp"]=>
-  float(31.77)
-  ["feels_like"]=>
-  float(33.72)
-  ["weather_description"]=>
-  string(9) "clear sky"
-  array(1) {
-  ["error"]=>
-  string(19) "Rate limit exceeded"
-}
-
-array(1) {
-  ["error"]=>
-  string(19) "Rate limit exceeded"
-}
-
-}*/
-
     if (!$weatherData || !isset($weatherData['current_temp'])) {
         echo json_encode(['success' => false, 'message' => 'Error fetching data - '.$weatherData['error']]);
         exit;
